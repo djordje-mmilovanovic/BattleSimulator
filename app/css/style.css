@@ -1,0 +1,85 @@
+.st-main-heading {
+	text-align: center;
+}
+
+.st-create-army-holder {
+	border: 1px solid black;
+}
+
+.st-army-table {
+	border: 1px solid black;
+}
+
+.st-create-squad-holder {
+	flex-direction: row;
+}
+
+.st-create-squad-holder label{
+	margin-bottom: 0;
+}
+
+.st-create-squad-holder input{
+	width: 45px;
+	text-align: center;
+}
+
+.st-create-squad-holder .st-div-1 button{
+	width: 25px;
+}
+
+.st-create-squad-holder > .st-div-2 {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.st-create-soldiers-holder {
+	padding: 10px;
+}
+
+.st-create-soldiers-holder > label{
+	width: 50px;
+}
+
+.st-create-vehicles-holder {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.st-create-vehicles-holder > label {
+	width: 50px;
+}
+
+.st-vehicle-list {
+	padding: 10px;
+}
+
+.st-vehicle-list label{
+	text-align: center;
+	margin: 0;
+}
+
+.st-controls-holder {
+	display: flex;
+	justify-content: center;
+}
+
+.st-controls-holder button{
+	margin-right: 5px;
+	margin-left: 5px;
+	color: black;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,131 @@
+<!--<h3 class="bg-primary p-a-1">{{getName()}}'s To Do List</h3>-->
+<!---->
+<!--<div class="m-t-1 m-b-1">-->
+<!--    <input class="form-control" #todoText />-->
+<!--    <button class="btn btn-primary m-t-1" (click)="addItem(todoText.value)">-->
+<!--        Add-->
+<!--    </button>-->
+<!--</div>-->
+<!---->
+<!--<table class="table table-striped table-bordered">-->
+<!--    <thead>-->
+<!--        <tr><th></th><th>Description</th><th>Done</th></tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--        <tr *ngFor="let item of getTodoItems(); let i = index">-->
+<!--            <td>{{ i + 1 }}</td>-->
+<!--            <td>{{ item.action }}</td>-->
+<!--			<td><input type="select" [(ngModel)]="item.done" /></td>-->
+<!--            <td [ngSwitch]="item.done">-->
+<!--                <span *ngSwitchCase="true">Yes</span>-->
+<!--                <span *ngSwitchDefault>No</span>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+
+
+
+
+<!--<div class="row">
+	
+</div>-->
+<div class="row">
+	<h3 class="bg-primary p-a-1 st-main-heading">Battle Simulator</h3>
+	<div class="col-xs-5 st-create-army-holder">
+		<h4 class="bg-primary p-a-1">Create an army</h4>
+		<div class="row p-a-1 st-create-squad-holder">
+			<div class="col-xs-6 st-div-1">
+				<label class="m-r-1">Number of squads:</label>
+				<input type="number" [(ngModel)]=getArmy().squads.length disabled>
+				<button class="btn-primary" (click)="addSquad()">+</button>
+				<button class="btn-primary" (click)="removeSquad()">-</button>
+			</div>
+			<div class="col-xs-6 st-div-2">
+				<button class="btn-primary" (click)="createArmy()">Create Army</button>
+			</div>
+		</div>
+													<!--squad.soldiers[0].health-->
+		<div class="st-create-units-holder" *ngFor="let squad of getArmy().squads; let i = index">
+			<h5 class="bg-primary">Squad {{i + 1}} units:</h5>
+			<div class="st-create-soldiers-holder">
+				<label class="m-r-1">Soldiers:</label>
+				<input type="number" [(ngModel)]="squad.soldiers.length" disabled>
+				<button class="btn-primary" (click)="addSoldier(i)">+</button>
+				<button class="btn-primary" (click)="removeSoldier(i)">-</button>
+			</div>
+			<div class="st-create-vehicles-holder">
+				<label class="m-r-1">Vehicles:</label>
+				<input type="number" [(ngModel)]="squad.vehicles.length" disabled>
+				<button class="btn-primary" (click)="addVehicle(i)">+</button>
+				<button class="btn-primary" (click)="removeVehicle(i)">-</button>
+				<div class="st-vehicle-list" *ngFor="let vehicle of squad.vehicles; let y = index">
+					<label>
+						Vehicle {{y + 1}} operators: 
+					</label>
+					<input type="number" [(ngModel)]="vehicle.operators.length" disabled>
+					<button class="btn-primary" (click)="addOperator(i, y)">+</button>
+					<button class="btn-primary" (click)="removeOperator(i, y)">-</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-2 st-controls-holder">
+		<button class="btn-danger" (click)="startBattle()">Start</button>
+		<button class="btn-warning" (click)="resetArmyTable()">Reset</button>
+		<button class="btn-warning" (click)="deleteLast()">Delete Last</button>
+	</div>
+	<div class="col-xs-5 st-army-table">
+		<h4 class="bg-primary p-a-1">Table of armies</h4>
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Army</th>
+					<th>Number of squads</th>
+					<th>Number of units</th>
+				</tr>
+			</thead>
+			<tbody *ngIf="getArmies().armies.length != 0">
+				<tr *ngFor="let army of getArmies().armies; let i = index">
+					<td>{{i + 1}}</td>
+					<td>{{army.squads.length}}</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="row">
+	<div class="col-xs-3">
+		<label class="p-a-1">Number of armies:</label>
+		<input type="number" value="2" min="2" max="5" #quantity>
+	</div>
+</div>
+<div class="row">
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Army</th>
+				<th>Number of squads</th>
+				<th>Number of units</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let army of getArmies(); let i = index">
+				<td>{{i + 1}}</td>
+				<td>{{army.length}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>-->
