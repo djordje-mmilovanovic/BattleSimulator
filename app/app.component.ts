@@ -1,11 +1,10 @@
 import { Component } from "@angular/core";
-import { BattleField, Army, Squad, Soldier, Vehicle, Model, TodoItem } from "./model";
+import { BattleField, Army, Squad, Soldier, Vehicle } from "./model";
 @Component({
     selector: "battle-app",
     templateUrl: "app/app.component.html"
 })
 export class AppComponent {
-    model = new Model();
     //army = new Army();
 	battleField = new BattleField();
 
@@ -173,19 +172,5 @@ export class AppComponent {
 	//	return sum;
 	//	
 	//}
-/////////////////////////////////////////////////////////////////////////////////////////	
-	
-//	getName() {
-//        return this.model.user;
-//    }
-//
-//	getTodoItems() {
-//        return this.model.items.filter(item => !item.done); // lambda function return this.model.items.filter(function (item) { return !item.done });
-//    }
-//	
-//	addItem(newItem) {
-//        if (newItem != "") {
-//            this.model.items.push(new TodoItem(newItem, false));
-//        }
-//    }
+
 }
