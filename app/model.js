@@ -49,6 +49,8 @@ var Squad = (function () {
         this.vehicles = [new Vehicle()];
         this.target;
         this.avgDmg;
+        this.active = true;
+        this.attackInt;
     }
     Squad.prototype.avgDmg = function () {
         var sum = 0;
@@ -76,9 +78,11 @@ var Soldier = (function (_super) {
         _super.call(this);
         this.experience = 0;
         this.damage = 0.05 + this.experience / 100;
+        this.chance;
     }
-    Soldier.prototype.attack = function () {
-        console.log(this.damage, 'damage');
+    Soldier.prototype.attackChance = function () {
+        this.chance = 0.5 * (1 + this.health / 100) * (Math.floor((Math.random() * 100) + (50 + this.experience))) / 100;
+        return this.chance;
     };
     return Soldier;
 }(Unit));

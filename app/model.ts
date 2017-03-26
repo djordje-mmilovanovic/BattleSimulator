@@ -48,6 +48,9 @@ export class Squad {
 		this.vehicles = [new Vehicle()];
 		this.target;
 		this.avgDmg;
+		this.active = true;
+		this.attackInt;
+		
 	}
 	
 	avgDmg() {
@@ -60,18 +63,6 @@ export class Squad {
 		});
 		return sum;
 	}
-	
-	//attack() {
-	//	var intervalID = setInterval(this.check, 100);
-	//}
-	//
-	//check() {
-	//	if() {
-	//		
-	//	} else {
-	//		
-	//	}
-	//}
 }
 
 class Unit {
@@ -86,10 +77,12 @@ export class Soldier extends Unit {
 		super();
 		this.experience = 0;
 		this.damage = 0.05 + this.experience/100;
+		this.chance;
 	}
 	
-	attack() {
-		console.log(this.damage, 'damage');
+	attackChance() {
+		this.chance = 0.5 * (1 + this.health/100) * (Math.floor((Math.random() * 100) + (50 + this.experience))) / 100;
+		return this.chance;
 	}
 }
 

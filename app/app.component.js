@@ -71,25 +71,54 @@ var AppComponent = (function () {
     AppComponent.prototype.startBattle = function () {
         if (this.battleField.armies.length > 1) {
             var that = this;
-            var avgDmgPerSquad;
+            //var avgDmgPerSquad
             var x;
             this.battleField.armies.forEach(function (element, aIndex) {
                 do {
                     x = Math.floor((Math.random() * that.battleField.armies.length));
                 } while (x == aIndex);
                 //console.log(index, "army attacks ->", x);
-                element.target = x; //target to attack
+                element.target = x; //army to attack
                 element.squads.forEach(function (element, sIndex) {
                     console.log(that.battleField.armies);
                     element.avgDmg = element.avgDmg();
                     element.target = Math.floor((Math.random() * that.battleField.armies[x].squads.length)); //squad to attack
                     //element.attack();
+                    element.attackInt = setInterval(function () { that.attack(x, element.target, element.avgDmg); }, 100);
+                    //var id = setInterval(function(){
+                    //alert("Hello");
+                    //if( ) {
+                    //console.log();
+                    //} else {
+                    //	//clearInterval(id);
+                    //}
+                    //}, 3000);
                     //console.log(sIndex, element.avgDmg());
                     //that.avgSquadDmg(element, sIndex, aIndex);
                 });
                 //console.log(element);
             });
         }
+    };
+    AppComponent.prototype.attack = function (army, squad, avgDmg) {
+        if (this.battleField.armies[army].squads[squad].active == true) {
+            //console.log(this.battleField.armies[army].squads[squad]);
+            this.battleField.armies[army].squads[squad].soldiers.forEach(function (element, index) {
+                element.health -= avgDmg;
+                if (element.experience < 50) {
+                    element.experience += 1;
+                }
+                if (element.health <= 0) {
+                    this.battleField.armies[army].squads[squad].active = false;
+                }
+                //console.log("---------------------------------------------------");
+                //console.log(element.health, element.experience, index)
+            });
+        }
+        else {
+            clearInterval(this.battleField.armies[army].squads[squad].attackInt);
+        }
+        //console.log("attack", army, squad, avgDmg);
     };
     AppComponent.prototype.resetArmyTable = function () {
         this.battleField.armies = [new model_1.Army()];
