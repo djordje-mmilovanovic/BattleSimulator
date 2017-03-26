@@ -12,7 +12,6 @@ var core_1 = require("@angular/core");
 var model_1 = require("./model");
 var AppComponent = (function () {
     function AppComponent() {
-        this.model = new model_1.Model();
         //army = new Army();
         this.battleField = new model_1.BattleField();
     }

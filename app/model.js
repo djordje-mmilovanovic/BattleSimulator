@@ -4,26 +4,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Model = (function () {
-    function Model() {
-        this.user = "Adam";
-        this.items = [new TodoItem("Buy Flowers", false),
-            new TodoItem("Get Shoes", false),
-            new TodoItem("Collect Tickets", false),
-            new TodoItem("Call Joe", false)];
-    }
-    return Model;
-}());
-exports.Model = Model;
-var TodoItem = (function () {
-    function TodoItem(action, done) {
-        this.action = action;
-        this.done = done;
-    }
-    return TodoItem;
-}());
-exports.TodoItem = TodoItem;
-/*------------------------------------------------------------------------------*/
 var BattleField = (function () {
     function BattleField() {
         this.armies = [new Army()];
