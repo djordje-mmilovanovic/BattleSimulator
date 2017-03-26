@@ -36,6 +36,7 @@ export class Army {
 		this.squads = [new Squad(),
 					   new Squad(),
 					   new Squad()];
+		this.target;
 	}
 }
 
@@ -45,7 +46,32 @@ export class Squad {
 						 new Soldier(),
 						 new Soldier(),];
 		this.vehicles = [new Vehicle()];
+		this.target;
+		this.avgDmg;
 	}
+	
+	avgDmg() {
+		var sum = 0;
+		this.soldiers.forEach(function(element, index) {
+			if(element.health > 0) {
+				sum += element.damage;
+			}
+			//console.log(element);
+		});
+		return sum;
+	}
+	
+	//attack() {
+	//	var intervalID = setInterval(this.check, 100);
+	//}
+	//
+	//check() {
+	//	if() {
+	//		
+	//	} else {
+	//		
+	//	}
+	//}
 }
 
 class Unit {
@@ -59,6 +85,11 @@ export class Soldier extends Unit {
 	constructor() {
 		super();
 		this.experience = 0;
+		this.damage = 0.05 + this.experience/100;
+	}
+	
+	attack() {
+		console.log(this.damage, 'damage');
 	}
 }
 

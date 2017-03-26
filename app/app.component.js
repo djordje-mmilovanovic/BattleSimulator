@@ -69,6 +69,27 @@ var AppComponent = (function () {
     };
     /////////////////////////////////////////////////////////////////////////////////////////
     AppComponent.prototype.startBattle = function () {
+        if (this.battleField.armies.length > 1) {
+            var that = this;
+            var avgDmgPerSquad;
+            var x;
+            this.battleField.armies.forEach(function (element, aIndex) {
+                do {
+                    x = Math.floor((Math.random() * that.battleField.armies.length));
+                } while (x == aIndex);
+                //console.log(index, "army attacks ->", x);
+                element.target = x; //target to attack
+                element.squads.forEach(function (element, sIndex) {
+                    console.log(that.battleField.armies);
+                    element.avgDmg = element.avgDmg();
+                    element.target = Math.floor((Math.random() * that.battleField.armies[x].squads.length)); //squad to attack
+                    //element.attack();
+                    //console.log(sIndex, element.avgDmg());
+                    //that.avgSquadDmg(element, sIndex, aIndex);
+                });
+                //console.log(element);
+            });
+        }
     };
     AppComponent.prototype.resetArmyTable = function () {
         this.battleField.armies = [new model_1.Army()];
@@ -76,18 +97,6 @@ var AppComponent = (function () {
     AppComponent.prototype.deleteLast = function () {
         if (this.battleField.armies.length > 1) {
             this.battleField.armies.pop();
-        }
-    };
-    /////////////////////////////////////////////////////////////////////////////////////////	
-    AppComponent.prototype.getName = function () {
-        return this.model.user;
-    };
-    AppComponent.prototype.getTodoItems = function () {
-        return this.model.items.filter(function (item) { return !item.done; }); // lambda function return this.model.items.filter(function (item) { return !item.done });
-    };
-    AppComponent.prototype.addItem = function (newItem) {
-        if (newItem != "") {
-            this.model.items.push(new model_1.TodoItem(newItem, false));
         }
     };
     AppComponent = __decorate([

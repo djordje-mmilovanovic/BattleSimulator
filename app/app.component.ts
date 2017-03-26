@@ -74,7 +74,36 @@ export class AppComponent {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 	startBattle() {
-		
+		if(this.battleField.armies.length > 1) {
+			var that = this;
+			var avgDmgPerSquad
+			var x;
+			this.battleField.armies.forEach(function(element, aIndex) {
+				do {
+					x = Math.floor((Math.random() * that.battleField.armies.length));
+				} while(x == aIndex);
+				//console.log(index, "army attacks ->", x);
+				
+				element.target = x;      											//target to attack
+				
+				element.squads.forEach(function(element, sIndex) {
+					console.log(that.battleField.armies);
+					element.avgDmg = element.avgDmg();
+					element.target = Math.floor((Math.random() * that.battleField.armies[x].squads.length));	//squad to attack
+					//element.attack();
+					
+					
+					
+					//console.log(sIndex, element.avgDmg());
+					//that.avgSquadDmg(element, sIndex, aIndex);
+				});
+				
+				//console.log(element);
+				
+			});
+			
+			
+		}
 	}
 	
 	resetArmyTable() {
@@ -85,22 +114,36 @@ export class AppComponent {
 		if(this.battleField.armies.length > 1)
 		{
 			this.battleField.armies.pop(); 
-		}
-		
+		}	
 	}
+	
+	//avgSquadDmg(element, sIndex, aIndex) {
+	//	//console.log('eleme',element);
+	//	var sum = 0;
+	//	element.soldiers.forEach(function(element, index) {
+	//		if(element.health > 0) {
+	//			sum += element.damage;
+	//		}
+	//		
+	//		//console.log(element);
+	//	});
+	//	//console.log(sum, 'is average dmg for squad -->', sIndex, 'in army', aIndex);
+	//	return sum;
+	//	
+	//}
 /////////////////////////////////////////////////////////////////////////////////////////	
 	
-	getName() {
-        return this.model.user;
-    }
-
-	getTodoItems() {
-        return this.model.items.filter(item => !item.done); // lambda function return this.model.items.filter(function (item) { return !item.done });
-    }
-	
-	addItem(newItem) {
-        if (newItem != "") {
-            this.model.items.push(new TodoItem(newItem, false));
-        }
-    }
+//	getName() {
+//        return this.model.user;
+//    }
+//
+//	getTodoItems() {
+//        return this.model.items.filter(item => !item.done); // lambda function return this.model.items.filter(function (item) { return !item.done });
+//    }
+//	
+//	addItem(newItem) {
+//        if (newItem != "") {
+//            this.model.items.push(new TodoItem(newItem, false));
+//        }
+//    }
 }
